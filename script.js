@@ -99,34 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const handleMediaQuery = (e) => {
             if (e.matches) {
                 hamburger.style.display = 'block';
-                navMenu.style.cssText = `
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    background: inherit;
-                    flex-direction: column;
-                    padding: 1rem 0;
-                    transform: translateY(-100%);
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    pointer-events: none;
-                `;
-                
-                // Add mobile open styles
-                const style = document.createElement('style');
-                style.textContent = `
-                    .nav-menu.mobile-open {
-                        transform: translateY(0) !important;
-                        opacity: 1 !important;
-                        pointer-events: auto !important;
-                    }
-                `;
-                document.head.appendChild(style);
+                navMenu.classList.add('mobile-menu');
+                navMenu.classList.remove('mobile-open');
             } else {
                 hamburger.style.display = 'none';
-                navMenu.style.cssText = '';
-                navMenu.classList.remove('mobile-open');
+                navMenu.classList.remove('mobile-menu', 'mobile-open');
             }
         };
         
